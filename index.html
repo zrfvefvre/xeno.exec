@@ -1,0 +1,775 @@
+<!doctype html>
+<html lang="en">
+
+<!-- Mirrored from xeno-executor.lol/ by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 01 Nov 2025 19:52:31 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Xeno | The Best Key-Less Executor</title>
+
+<!-- Favicons (in /favicon/ as requested) -->
+<link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+<link rel="manifest" href="favicon/site.webmanifest">
+<meta name="theme-color" content="#050505">
+
+<!-- Primary SEO meta -->
+<meta name="description" content="Xeno — the best free, keyless Roblox executor. Lightning-fast external script execution, simple interface, and reliable performance. Download for free at xeno-executor.lol.">
+<meta name="keywords" content="Xeno, Roblox executor, keyless executor, free executor, script execution, external executor">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="index.html">
+<meta name="author" content="Xeno">
+
+<!-- Open Graph (link previews) -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Xeno | The Best Key-Less Executor">
+<meta property="og:description" content="Xeno — the best free, keyless Roblox executor. Lightning-fast external script execution with a simple interface.">
+<meta property="og:image" content="favicon/favicon-32x32.png">
+<meta property="og:url" content="index.html">
+<meta property="og:locale" content="en_US">
+
+<!-- Twitter Card (no handles included) -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Xeno | The Best Key-Less Executor">
+<meta name="twitter:description" content="Xeno — the best free, keyless Roblox executor. Lightning-fast external script execution with a simple interface.">
+<meta name="twitter:image" content="favicon/favicon-32x32.png">
+
+<!-- Minimal structured data (Schema.org) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Xeno",
+  "url": "https://xeno-executor.lol/",
+  "description": "Xeno is a free, keyless Roblox executor offering external script execution, fast performance, and a simple UI."
+}
+</script>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&amp;family=Poppins:wght@600;700;800&amp;display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg: #050505;
+    --muted: rgba(255,255,255,0.50);
+    --accent: #ffffff;
+    --nav-h: 64px;
+    --pill-radius: 40px;
+    --ease: cubic-bezier(.2,.9,.2,1);
+    --globe-size: clamp(300px, 36vw, 520px);
+    --globe-speed: 0.6; /* revolutions per 40s roughly; bigger = faster */
+    --glow-color: 64,169,255; /* rgb for bluish glow */
+  }
+
+  *{box-sizing:border-box}
+  html,body{height:100%;margin:0;background:var(--bg);color:var(--accent);font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial;-webkit-font-smoothing:antialiased}
+  img{display:block;max-width:100%}
+
+  main{padding-top: calc(var(--nav-h) + 40px);}
+
+  header.site-header{position:fixed;left:0;right:0;top:0;height:var(--nav-h);z-index:1200;display:flex;align-items:center;justify-content:center;background:transparent;pointer-events:auto;-webkit-backdrop-filter: none;backdrop-filter: none;} 
+  .nav-inner{width:100%;max-width:1280px;padding:10px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;transition: all 360ms var(--ease); background:transparent; border-radius:8px; position:relative}
+
+  /* BRAND: now an anchor for accessibility + SEO */
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    text-decoration:none; /* for anchor */
+    color:inherit;
+    cursor:pointer;
+  }
+  .brand img{width:28px;height:28px;display:block}
+  .brand .title{font-weight:800;font-family:Poppins;font-size:18px;letter-spacing:-0.01em}
+
+  /* visible focus state for keyboard users */
+  .brand:focus-visible{
+    outline:none;
+    box-shadow: 0 0 0 4px rgba(var(--glow-color), 0.08);
+    border-radius:8px;
+  }
+
+  /* NAV LINKS */
+  nav.nav-links{display:flex;gap:18px;align-items:center;justify-content:center;flex:1;max-width:760px;margin:0 12px;overflow:visible;flex-wrap:wrap}
+  nav.nav-links a{color:var(--muted);text-decoration:none;font-size:15px;font-weight:600;padding:6px 8px;position:relative;transition:transform 220ms var(--ease), color 160ms linear, text-shadow 260ms var(--ease), filter 260ms var(--ease);white-space:nowrap}
+
+  /* glow on hover & focus (accessible): subtle text-shadow + soft outline using box-shadow on a ::after pseudo for larger glow */
+  nav.nav-links a:hover,
+  nav.nav-links a:focus{
+    color:var(--accent);
+    transform: translateY(-3px);
+    text-shadow: 0 6px 18px rgba(255,255,255,0.08), 0 0 30px rgba(var(--glow-color),0.06);
+    outline: none;
+  }
+  nav.nav-links a:focus-visible{box-shadow: 0 0 0 4px rgba(var(--glow-color),0.08);border-radius:6px}
+
+  .nav-right{display:flex;align-items:center;gap:14px}
+  /* When mobile menu is open, keep header/nav expanded regardless of scroll */
+  header.menu-open .nav-inner{
+    width: calc(100% - 24px) !important;
+    margin:8px auto;
+    padding:12px 14px;
+    border-radius:12px;
+    background: rgba(0,0,0,0.96);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.75);
+  }
+
+  /* ensure nav-links dropdown stretches to full width when open */
+  nav.nav-links.open{display:flex;align-items:flex-start;left:12px;right:12px;top:var(--nav-h);width: calc(100% - 24px);max-width:none;z-index:1400;}
+  .micro-icon{width:18px;height:18px;opacity:0.92}
+  .join-pill{height:34px;padding:6px 12px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.04);font-weight:700;font-size:13px;display:inline-flex;align-items:center;gap:8px;transition:transform 220ms var(--ease),box-shadow 220ms var(--ease);cursor:pointer}
+  .join-pill:hover{transform:translateY(-2px);box-shadow:0 10px 40px rgba(var(--glow-color),0.06),0 6px 18px rgba(0,0,0,0.6)}
+  .hamburger{display:none;width:42px;height:42px;border-radius:10px;align-items:center;justify-content:center;cursor:pointer;border:1px solid rgba(255,255,255,0.03);background:rgba(255,255,255,0.01)}
+  .hamburger span{display:block;width:18px;height:2px;background:var(--muted);border-radius:2px;box-shadow:0 6px 0 0 var(--muted),0 -6px 0 0 var(--muted);} 
+
+  header.site-header.is-pilled .nav-inner{width: calc(100% - 96px);margin:8px auto;padding:12px 18px;border-radius: var(--pill-radius);background: rgba(6,6,6,0.48);-webkit-backdrop-filter: blur(8px);backdrop-filter: blur(8px);border: 1px solid rgba(255,255,255,0.035);box-shadow: 0 30px 90px rgba(0,0,0,0.75);transform: translateY(6px);} 
+  header.site-header.is-pilled{background: rgba(0,0,0,0.08);-webkit-backdrop-filter: blur(6px);backdrop-filter: blur(6px);}  
+
+  .hero{padding:22px 20px 30px;text-align:center;max-width:1200px;margin:0 auto}
+  .hero h1{font-family:Poppins,Inter;font-size:clamp(26px, 4.2vw, 44px);line-height:1.02;margin:0;font-weight:800;letter-spacing:-0.02em;color:var(--accent)}
+  .hero h1 .rotating-word{color: rgba(255,255,255,0.58);display:inline-block;position:relative;min-width:80px;vertical-align:middle}
+  .word-fade{ transition: opacity 260ms var(--ease), transform 260ms var(--ease); opacity:1; transform: translateY(0); }
+  .word-fade.hide{ opacity:0; transform: translateY(-6px); }
+  .hero p.lead{margin:18px auto 0;max-width:920px;color:var(--muted);font-size:clamp(13px, 1.8vw, 15.5px);font-weight:500}
+
+  .features-wrap{max-width:1220px;margin:36px auto;display:grid;grid-template-columns:1fr 360px;gap:28px;padding:0 20px}
+  .card{background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.005));border-radius:24px;padding:22px;border:1px solid rgba(255,255,255,0.035);box-shadow:0 18px 50px rgba(0,0,0,0.72);transition:transform 260ms var(--ease),box-shadow 260ms var(--ease);position:relative}
+
+  .editor-wrap{margin-top:18px;border-radius:16px;padding:16px;background:linear-gradient(180deg, rgba(255,255,255,0.008), rgba(255,255,255,0.003));border:1px solid rgba(255,255,255,0.02)}
+  .mock-editor{position:relative;height:260px;border-radius:12px;overflow:hidden;display:flex;align-items:center;justify-content:center}
+  .editor-screenshot{width:92%;height:86%;object-fit:cover;border-radius:8px;border:1px solid rgba(255,255,255,0.02);box-shadow:inset 0 40px 60px rgba(0,0,0,0.55)}
+
+  .stat-row{margin-top:18px;display:flex;flex-direction:column;gap:12px}
+  .stat{display:flex;align-items:center;justify-content:space-between;padding:12px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.008), rgba(0,0,0,0.14));border:1px solid rgba(255,255,255,0.02)}
+
+  .active-scroller{margin-top:16px;height:160px;border-radius:12px;padding:10px;background:linear-gradient(180deg, rgba(255,255,255,0.006), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.02);overflow:hidden}
+  .scroller-list{display:flex;flex-direction:column;gap:10px;will-change:transform}
+  .scroller-item{display:flex;align-items:center;justify-content:space-between;padding:10px;border-radius:10px;background:rgba(0,0,0,0.30);border:1px solid rgba(255,255,255,0.02);height:58px}
+
+  .lower-section{max-width:1220px;margin:28px auto 56px;padding:0 20px;display:grid;grid-template-columns:1fr 1fr;gap:28px}
+  .activity-item{display:flex;gap:12px;align-items:center;padding:12px;border-radius:12px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.015);min-height:66px}
+  .activity-item img{width:48px;height:48px;border-radius:999px;object-fit:cover}
+  .pill{background:rgba(255,255,255,0.03);padding:8px;border-radius:10px;font-weight:800;font-size:12px;color:var(--accent)}
+
+/* ---------- GLOBE (minimal safe tweaks only) ---------- */
+  .globe-wrap{
+    --size: var(--globe-size);
+    width: var(--size);
+    height: calc(var(--size) / 2);
+    overflow: hidden;
+    position: relative;
+    margin-left: auto;
+    filter: drop-shadow(0 20px 60px rgba(0,0,0,0.65));
+    z-index:1;
+    border-radius: 50% 50% 0 0 / 100% 100% 0 0; /* semicircle mask */
+    background: transparent;
+    display:flex;align-items:flex-start;justify-content:center;
+  }
+  .globe-inner{ width: var(--size); height: calc(var(--size)); position: absolute; top: 0; left: 50%; transform: translateX(-50%); border-radius:50%; overflow:hidden}
+  .globe-canvas{ width:100%; height:100%; display:block }
+
+  /* Reduce the overlay intensity and REMOVE mix-blend-mode to avoid blowing out whites */
+  .globe-glow{
+    position:absolute;right:0;Bottom:0;top:0;left:0;pointer-events:none;
+    background: radial-gradient(ellipse at right center, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0.008) 6%, rgba(0,0,0,0.0) 55%);
+    opacity:0.28;
+    /* mix-blend-mode removed so we don't brighten the texture */
+  }
+  .globe-vignette{ position:absolute;inset:0;pointer-events:none;background: radial-gradient(1200px 600px at 80% 60%, rgba(0,0,0,0.0) 0%, rgba(0,0,0,0.32) 45%, rgba(0,0,0,0.62) 85%); }
+
+  /* ---------- FOOTER ---------- */
+  footer.site-footer{margin-top:40px;padding:20px 20px;border-top:1px solid rgba(255,255,255,0.02);display:flex;align-items:center;justify-content:space-between;color:var(--muted);transition:transform 260ms var(--ease),box-shadow 260ms var(--ease);position:relative;background:transparent;gap:12px;flex-wrap:wrap}
+
+  footer.site-footer .thin-line{flex-basis:100%;height:1px}
+  .footer-brand{display:flex;align-items:center;gap:12px}
+  .footer-links{display:flex;gap:12px;align-items:center}
+  .footer-links a{color:var(--muted);text-decoration:none;font-weight:600;font-size:14px;padding:6px 8px;border-radius:6px;transition:color 180ms linear, transform 200ms var(--ease), text-shadow 260ms var(--ease)}
+  .footer-links a:hover,.footer-links a:focus{color:var(--accent);transform:translateY(-2px);text-shadow:0 8px 28px rgba(255,255,255,0.06),0 0 26px rgba(var(--glow-color),0.06)}
+  .footer-links a:focus-visible{box-shadow:0 0 0 4px rgba(var(--glow-color),0.06)}
+  .footer-social a{display:inline-flex;align-items:center;justify-content:center;padding:6px;border-radius:8px;transition:transform 200ms var(--ease),box-shadow 200ms var(--ease)}
+  .footer-social a img{display:block}
+  .footer-social a:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(var(--glow-color),0.06)}
+
+  /* Responsive footer: stack on smaller screens and make links wrap */
+  @media (max-width:720px){
+    footer.site-footer{flex-direction:column;align-items:flex-start;padding:18px 16px}
+    .footer-brand{order:1}
+    .footer-social{order:2}
+    .footer-links{order:3;width:100%;justify-content:flex-start;flex-wrap:wrap;gap:10px;margin-top:6px}
+    .footer-links a{padding:8px 10px}
+  }
+
+  @media (max-width:520px){
+    .footer-brand div{font-size:14px}
+    .footer-links a{font-size:13px;padding:6px 8px}
+    footer.site-footer{padding:14px 12px}
+  }
+
+  @media (max-width:1100px){
+    .features-wrap{grid-template-columns:1fr;padding:0 16px}
+    .lower-section{grid-template-columns:1fr;padding:0 16px}
+    .hero h1{font-size:clamp(26px,4.8vw,40px)}
+    .globe-wrap{ --size: clamp(260px, 40vw, 460px); height: calc(var(--size)/2); }
+    .globe-inner{ width:var(--size); height:var(--size); }
+  }
+  @media (max-width:900px){
+    .nav-inner{gap:8px}
+    nav.nav-links{display:none;position:absolute;left:12px;right:12px;top:var(--nav-h);background:rgba(0,0,0,0.96);padding:12px;border-radius:12px;flex-direction:column;gap:8px;box-shadow:0 30px 80px rgba(0,0,0,0.75);-webkit-backdrop-filter:none;backdrop-filter:none;z-index:1300;} 
+    nav.nav-links.open{display:flex}
+    .hamburger{display:flex}
+  }
+  @media (max-width:520px){
+    .hero h1{font-size:clamp(22px,7vw,32px)}
+    .mock-editor{height:180px}
+    .nav-inner{padding:8px}
+    .brand .title{display:none}
+  }
+
+  .muted{color:var(--muted)}
+
+  /* Respect reduced motion */
+  @media (prefers-reduced-motion: reduce){
+    *{transition:none !important}
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header" id="siteHeader" aria-hidden="false">
+  <div class="nav-inner" id="navInner">
+    <!-- BRAND: anchor that navigates to homepage -->
+    <a href="index.html" class="brand" id="brandLink" aria-label="Go to homepage">
+      <img src="images/logo-placeholder.png" alt="Xeno logo">
+      <div class="title">Xeno</div>
+    </a>
+
+    <nav class="nav-links" id="mainNav" aria-label="Primary navigation">
+      <a href="#">Home</a>
+      <a href="about">About</a>
+      <a href="tutorial">Help</a>
+      <!-- <a href="#">Executor</a> -->
+      <a href="download">Download</a>
+      <!-- <a href="#">Credits</a>
+      <a href="#">Donate</a> -->
+    </nav>
+
+    <div style="display:flex;align-items:center;gap:12px">
+      <div class="hamburger" id="hamburger" aria-hidden="false" title="Toggle menu"><span></span></div>
+      <div class="nav-right">
+        <img src="images/discord-icon.png" class="micro-icon" alt="discord icon">
+        <div class="join-pill">Join Discord</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero" aria-labelledby="hero-title">
+    <h1 id="hero-title">Experience the Best <span id="rotWord" class="rotating-word word-fade">Safe</span> Executor</h1>
+    <p class="lead muted">Xeno provides lightning-fast execution, external script support, and a simple interface — all completely free and keyless.</p>
+  </section>
+
+  <section class="features-wrap" aria-label="Features">
+    <div class="card">
+      <h3 style="margin:0;font-weight:700">External Execution</h3>
+      <p class="muted" style="margin-top:8px">Execute scripts externally with the keyless executor interface.</p>
+
+      <div class="editor-wrap">
+        <div class="mock-editor" role="img" aria-label="editor mock">
+          <div class="mock-grid" aria-hidden="true"></div>
+          <img src="images/editor-screenshot-placeholder.png" alt="editor screenshot placeholder" class="editor-screenshot">
+        </div>
+
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:14px;color:var(--muted);font-size:13px">
+          <div style="display:flex;gap:8px;align-items:center"><div style="width:10px;height:10px;border-radius:50%;background:#bcd;opacity:0.06"></div><div style="width:10px;height:10px;border-radius:50%;background:#bcd;opacity:0.04"></div></div>
+          <div>Xeno v1.2.85 · https://xeno-executor.lol</div>
+        </div>
+      </div>
+    </div>
+
+    <aside class="card" aria-labelledby="perf">
+      <h3 id="perf">Lightning Fast Performance</h3>
+      <p class="muted" style="margin-top:8px">Experience lightning fast script execution with the keyless executor.</p>
+
+      <div class="stat-row">
+        <div class="stat"><div><div style="font-weight:700">Execution Speed</div><div style="color:var(--muted);font-size:12px;margin-top:6px">Instant script execution</div></div><div style="font-weight:800">Lightning Fast</div></div>
+
+        <div class="stat"><div><div style="font-weight:700">Performance</div><div style="color:var(--muted);font-size:12px;margin-top:6px">Good performance</div></div><div style="font-weight:800">99.9%</div></div>
+
+        <div class="stat"><div><div style="font-weight:700">Response Time</div><div style="color:var(--muted);font-size:12px;margin-top:6px">Ultra-low latency</div></div><div style="font-weight:800">Fast</div></div>
+
+        <div class="stat"><div><div style="font-weight:700">Reliability</div><div style="color:var(--muted);font-size:12px;margin-top:6px">Stable execution</div></div><div style="font-weight:800">100%</div></div>
+      </div>
+
+      <h4 style="margin-top:18px;color:var(--muted);font-weight:700">Active Clients</h4>
+      <div class="active-scroller" id="activeScroller" aria-live="polite" aria-atomic="false">
+        <div class="scroller-list" id="scrollerList"></div>
+      </div>
+    </aside>
+  </section>
+
+  <section class="lower-section" aria-label="Lower">
+    <div class="card">
+      <h4 style="font-family:Poppins;margin:0">100% Free &amp; Keyless</h4>
+      <p class="muted" style="margin-top:12px">No keys, no payments, no restrictions. Xeno is completely free to use and trusted by <strong>558,575</strong> users worldwide.</p>
+
+      <div class="activity-list" id="activityList" style="margin-top:18px"></div>
+    </div>
+
+    <div class="card" style="display:flex;flex-direction:column;justify-content:space-between;">
+      <div>
+        <h4 style="font-family:Poppins;margin:0">Users Worldwide</h4>
+        <p class="muted" style="margin-top:12px">Join our growing community of users who trust and use Xeno daily.</p>
+      </div>
+
+      <div class="globe-wrap" id="globeWrap" aria-hidden="false" title="Users Worldwide (globe)">
+        <div class="globe-inner">
+          <canvas id="globeCanvas" class="globe-canvas" aria-hidden="true"></canvas>
+        </div>
+        <div class="globe-glow" aria-hidden="true"></div>
+        <div class="globe-vignette" aria-hidden="true"></div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="thin-line" aria-hidden="true"></div>
+
+    <div class="footer-brand">
+      <img src="images/logo-placeholder.png" width="28" height="28" alt="">
+      <div style="font-weight:700">Experience the future</div>
+    </div>
+
+    <div class="footer-links" aria-label="Footer links">
+      <!-- <a href="#">Credits</a> -->
+       <a href="download">Download</a>
+      <a href="tutorial">Help</a>
+      <!-- <a href="#">Donate</a> -->
+    </div>
+
+    <div class="footer-social" style="display:flex;gap:12px;align-items:center;opacity:0.92">
+      <a href="#" aria-label="Discord"><img src="images/discord-icon.png" width="18" height="18" alt=""></a>
+      <!-- <a href="#" aria-label="Other"><img src="images/other-icon.png" width="18" height="18" alt=""></a>
+      <a href="#" aria-label="Email"><img src="images/mail-icon.png" width="18" height="18" alt=""></a> -->
+    </div>
+  </footer>
+</main>
+
+<!-- three.js from CDN -->
+<script src="../unpkg.com/three%400.152.2/build/three.min.js"></script>
+<script>
+/* Full page script (drop this whole <script> in place of your current one).
+   Fixes the white fringe/ring by:
+   - removing the DOM glow overlay (so CSS white glow can't brighten the globe)
+   - using alphaTest to discard nearly-transparent white fringe pixels at PNG edges
+   - keeping texture encoding correct (sRGB) and preserving your original image
+*/
+
+/////////////////////// NAV: pill state on scroll ///////////////////////
+(function(){
+  const header = document.getElementById('siteHeader');
+  let ticking = false;
+  function checkScroll(){
+    const y = window.scrollY || window.pageYOffset;
+    if(y > 10) header.classList.add('is-pilled'); else header.classList.remove('is-pilled');
+  }
+  window.addEventListener('scroll', ()=> {
+    if(!ticking){ window.requestAnimationFrame(()=>{ checkScroll(); ticking=false; }); ticking=true; }
+  }, {passive:true});
+  checkScroll();
+})();
+
+/////////////////////// HAMBURGER TOGGLE ///////////////////////
+(function(){
+  const ham = document.getElementById('hamburger');
+  const nav = document.getElementById('mainNav');
+  const header = document.getElementById('siteHeader');
+  function closeMenu(){
+    nav.classList.remove('open');
+    header.classList.remove('menu-open');
+  }
+  ham && ham.addEventListener('click', (e)=> {
+    e.stopPropagation();
+    nav.classList.toggle('open');
+    header.classList.toggle('menu-open');
+  });
+  document.addEventListener('click', (e)=> {
+    if(nav.classList.contains('open') && !nav.contains(e.target) && !ham.contains(e.target)) closeMenu();
+  });
+  // close on escape key for accessibility
+  document.addEventListener('keydown', (e)=> { if(e.key === 'Escape') closeMenu(); });
+})();
+
+
+/////////////////////// ROTATING HERO WORDS ///////////////////////
+(function(){
+  const wordEl = document.getElementById('rotWord');
+  if(!wordEl) return;
+  const words = ['Safe','Reliable','Keyless','External','Free'];
+  let idx = 0;
+  function rotateWord(){
+    wordEl.classList.add('hide');
+    setTimeout(()=>{
+      idx = (idx + 1) % words.length;
+      wordEl.textContent = words[idx];
+      wordEl.classList.remove('hide');
+    }, 260);
+  }
+  let rotInterval = setInterval(rotateWord, 1200);
+  window.addEventListener('beforeunload', ()=> clearInterval(rotInterval));
+})();
+
+/////////////////////// SCROLLER / ACTIVITY (TOP→BOTTOM SLIDE — SMOOTH) ///////////////////////
+(function(){
+  const sampleClients = [
+    {id: 'PID: 13704', status: 'Connected'},
+    {id: 'PID: 18016', status: 'Idle'},
+    {id: 'PID: 9762', status: 'Connected'},
+    {id: 'PID: 7408', status: 'Executing'},
+    {id: 'PID: 7202', status: 'Connected'},
+    {id: 'PID: 7024', status: 'Active'},
+    {id: 'PID: 9112', status: 'Connected'}
+  ];
+
+  const recentActivities = [
+    {name:'ADAMK0 :)', activity:'used Xeno — Playing Roblox', time:'Recently', avatar:'images/avatar-1.png'},
+    {name:'a...', activity:'used Xeno — Active on Discord', time:'Recently', avatar:'images/avatar-2.png'},
+    {name:'User_345', activity:'used Xeno — Executed script', time:'1m ago', avatar:'images/avatar-3.png'},
+    {name:'Gamer08', activity:'used Xeno — Joined Discord', time:'4m ago', avatar:'images/avatar-4.png'},
+    {name:'Nova#1337', activity:'used Xeno — Playing Valorant', time:'1m ago', avatar:'images/avatar-5.png'},
+    {name:'Zypher', activity:'used Xeno — Playing Minecraft', time:'3m ago', avatar:'images/avatar-6.png'},
+    {name:'Echo_21', activity:'used Xeno — Playing CS:GO', time:'4m ago', avatar:'images/avatar-7.png'},
+    {name:'Kira.exe', activity:'used Xeno — Playing Apex Legends', time:'2m ago', avatar:'images/avatar-8.png'},
+    {name:'LunaOwO', activity:'used Xeno — Playing Fortnite', time:'3m ago', avatar:'images/avatar-9.png'},
+    {name:'Rogue99', activity:'used Xeno — Grinding in Rust', time:'2m ago', avatar:'images/avatar-10.png'},
+    {name:'Kaiyo', activity:'used Xeno — Playing League of Legends', time:'1m ago', avatar:'images/avatar-11.png'}
+  ];
+
+  /* ---------------- LEFT scroller (unchanged) ---------------- */
+  const scrollerList = document.getElementById('scrollerList');
+  function populateScroller(){
+    if(!scrollerList) return;
+    scrollerList.innerHTML = '';
+    sampleClients.forEach(c=>{
+      const el = document.createElement('div');
+      el.className = 'scroller-item';
+      el.innerHTML = `<div style="display:flex;align-items:center"><div class="dot" style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.06);margin-right:10px"></div><div style="font-weight:700">${c.id}</div></div><div style="font-size:12px;color:rgba(255,255,255,0.45)">${c.status}</div>`;
+      scrollerList.appendChild(el);
+    });
+    for(let i=0;i<2 && scrollerList.children[i];i++){ scrollerList.appendChild(scrollerList.children[i].cloneNode(true)); }
+  }
+  populateScroller();
+
+  let offset = 0; const itemHeight = 68;
+  function stepScroll(){
+    if(!scrollerList) return;
+    offset += itemHeight;
+    scrollerList.style.transition = 'transform 180ms cubic-bezier(.2,.9,.2,1)';
+    scrollerList.style.transform = `translateY(-${offset}px)`;
+    scrollerList.addEventListener('transitionend', function onTransEnd(){
+      scrollerList.style.transition = 'none';
+      scrollerList.appendChild(scrollerList.children[0]);
+      offset = 0;
+      scrollerList.style.transform = `translateY(0px)`;
+    }, {once:true});
+  }
+  let autoScroll = setTimeout(stepScroll, 900);
+  const scroller = document.getElementById('activeScroller');
+  if(scroller){
+    scroller.addEventListener('mouseenter', ()=>{ clearTimeout(autoScroll); scrollerList.style.transition='none'; });
+    scroller.addEventListener('mouseleave', ()=>{ autoScroll = setTimeout(stepScroll, 600); });
+  }
+
+  /* ---------------- RIGHT activity list: top→bottom slide + smooth crossfade ---------------- */
+  const activityList = document.getElementById('activityList');
+  if(!activityList) return;
+
+  // ---------- configurable timings ----------
+  const SLIDE_MS = 280;    // stack slide duration (ms)
+  const PAUSE_MS = 300;   // pause after each slide before next begins (ms) — lower = faster overall
+  const FADE_MS  = 320;   // per-item fade/scale duration (ms) for smoothness
+
+  const VISIBLE_COUNT = 3;
+  activityList.style.height = `calc(66px * ${VISIBLE_COUNT})`;
+  activityList.style.overflow = 'hidden';
+  activityList.style.position = 'relative';
+
+  // wrapper that will be translated (the visible window shows top→bottom)
+  const stack = document.createElement('div');
+  stack.className = 'activity-stack';
+  stack.style.position = 'absolute';
+  stack.style.top = '0';
+  stack.style.left = '0';
+  stack.style.right = '0';
+  stack.style.willChange = 'transform';
+  stack.style.transform = 'translateY(0)';
+  activityList.appendChild(stack);
+
+  // create item node with baseline styles
+  function createActivityNode(a){
+    const n = document.createElement('div');
+    n.className = 'activity-item';
+    n.style.boxSizing = 'border-box';
+    n.style.minHeight = '66px';
+    n.style.display = 'flex';
+    n.style.gap = '12px';
+    n.style.alignItems = 'center';
+    n.style.padding = '12px';
+    n.style.background = 'rgba(255,255,255,0.02)';
+    n.style.borderRadius = '12px';
+    n.style.border = '1px solid rgba(255,255,255,0.015)';
+    // prepare for crossfade/scale — we'll toggle these inline when animating
+    n.style.transition = `opacity ${FADE_MS}ms cubic-bezier(.22,.9,.32,1), transform ${FADE_MS}ms cubic-bezier(.22,.9,.32,1)`;
+    n.style.opacity = '1';
+    n.style.transform = 'translateY(0) scale(1)';
+    n.innerHTML = `<img src="${a.avatar}" alt="avatar" style="width:48px;height:48px;border-radius:999px;object-fit:cover"><div style="flex:1"><div style="font-weight:700">${a.name}<span style="font-weight:400;color:rgba(255,255,255,0.45);margin-left:8px">${a.time}</span></div><small style="color:rgba(255,255,255,0.48)">${a.activity}</small></div><div class="pill">Recently</div>`;
+    return n;
+  }
+
+  // fill initial 3 items
+  let start = 0;
+  function seedInitial(){
+    stack.innerHTML = '';
+    const len = recentActivities.length;
+    for(let i = 0; i < VISIBLE_COUNT; i++){
+      const a = recentActivities[(start + i) % len];
+      stack.appendChild(createActivityNode(a));
+    }
+  }
+  seedInitial();
+
+  // measure actual item height (robust if CSS changes)
+  function measureItemHeight(){
+    const first = stack.querySelector('.activity-item');
+    if(first) return Math.max(1, Math.round(first.getBoundingClientRect().height));
+    return 66;
+  }
+
+  // timer control
+  let nextTimer = null;
+  let isAnimating = false;
+
+  function scheduleNext(){
+    if(nextTimer) clearTimeout(nextTimer);
+    nextTimer = setTimeout(()=> slideDownOnce(), PAUSE_MS);
+  }
+
+  // main sliding + smooth crossfade routine
+  function slideDownOnce(){
+    if(isAnimating) return;
+    isAnimating = true;
+    const len = recentActivities.length;
+    if(len === 0){ isAnimating = false; scheduleNext(); return; }
+
+    const incomingIndex = (start + VISIBLE_COUNT) % len;
+    const incoming = recentActivities[incomingIndex];
+    const incomingNode = createActivityNode(incoming);
+
+    // Set initial micro-animation state for incoming: invisible & slightly up/scale
+    incomingNode.style.opacity = '0';
+    incomingNode.style.transform = 'translateY(-8px) scale(0.996)';
+
+    // insert incoming at top
+    stack.insertBefore(incomingNode, stack.firstChild);
+
+    // identify outgoing (the last visible child before trim) so we can fade it
+    const outgoingCandidate = stack.children[VISIBLE_COUNT] || null;
+    if(outgoingCandidate){
+      // fade & nudge outgoing down slightly for smoother exit
+      outgoingCandidate.style.transition = `opacity ${FADE_MS}ms cubic-bezier(.22,.9,.32,1), transform ${FADE_MS}ms cubic-bezier(.22,.9,.32,1)`;
+      outgoingCandidate.style.opacity = '0';
+      outgoingCandidate.style.transform = 'translateY(8px) scale(0.996)';
+    }
+
+    // measure and perform stack translate: start at -itemH, animate to 0
+    const itemH = measureItemHeight();
+    stack.style.transition = 'none';
+    stack.style.transform = `translateY(-${itemH}px)`;
+    // force reflow so the starting transform is registered
+    stack.offsetHeight;
+
+    // animate stack down
+    stack.style.transition = `transform ${SLIDE_MS}ms cubic-bezier(.2,.9,.2,1)`;
+    stack.style.transform = 'translateY(0)';
+
+    // small delay to let incoming fade/scale animate in (slightly longer than SLIDE_MS for smoothness)
+    // start incoming animation a tick later to avoid visual stutter
+    requestAnimationFrame(()=> {
+      // animate incoming to visible
+      incomingNode.style.transition = `opacity ${FADE_MS}ms cubic-bezier(.22,.9,.32,1), transform ${FADE_MS}ms cubic-bezier(.22,.9,.32,1)`;
+      incomingNode.style.opacity = '1';
+      incomingNode.style.transform = 'translateY(0) scale(1)';
+    });
+
+    // on stack transition end: trim extras and normalize styles
+    const onEnd = function(){
+      // Remove extras (keep exactly VISIBLE_COUNT)
+      while(stack.children.length > VISIBLE_COUNT) stack.removeChild(stack.lastChild);
+
+      // normalize remaining children transitions to be subtle for micro layout changes
+      Array.from(stack.children).forEach(ch => {
+        ch.style.transition = `opacity 200ms cubic-bezier(.22,.9,.32,1), transform 200ms cubic-bezier(.22,.9,.32,1)`;
+        ch.style.opacity = '1';
+        ch.style.transform = 'translateY(0) scale(1)';
+      });
+
+      // reset stack transform & transition so next slide starts from a clean state
+      stack.style.transition = 'none';
+      stack.style.transform = 'translateY(0)';
+
+      // advance window start
+      start = (start + 1) % len;
+
+      isAnimating = false;
+      stack.removeEventListener('transitionend', onEnd);
+
+      // schedule next
+      scheduleNext();
+    };
+
+    // ensure we only attach one listener
+    stack.addEventListener('transitionend', onEnd);
+  }
+
+  function startRotate(){
+    if(nextTimer) return;
+    // slight initial delay to settle layout then start loop
+    nextTimer = setTimeout(()=> slideDownOnce(), 120);
+  }
+  function stopRotate(){
+    if(nextTimer) clearTimeout(nextTimer);
+    nextTimer = null;
+  }
+
+  activityList.addEventListener('mouseenter', ()=> stopRotate());
+  activityList.addEventListener('mouseleave', ()=> startRotate());
+
+  // kick it off
+  setTimeout(()=> {
+    seedInitial();
+    startRotate();
+  }, 60);
+
+  // Dev helper
+  window.__xenoSmoothJump = (idx) => {
+    start = ((idx % recentActivities.length) + recentActivities.length) % recentActivities.length;
+    seedInitial();
+  };
+})();
+
+/////////////////////// THREE.JS GLOBE — ORIGINAL IMAGE (fix white fringe) ///////////////////////
+(function(){
+  const canvas = document.getElementById('globeCanvas');
+  if(!canvas) return;
+
+  // remove any bright CSS overlay that would add white glow around the globe
+  const glow = document.querySelector('.globe-glow');
+  if(glow) glow.style.display = 'none';
+  const vign = document.querySelector('.globe-vignette');
+  if(vign) vign.style.display = 'none';
+
+  // renderer: explicitly disable premultipliedAlpha so blending is predictable with our alphaTest fallback
+  const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true, premultipliedAlpha: false });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+  renderer.outputEncoding = THREE.sRGBEncoding;
+  renderer.toneMapping = THREE.NoToneMapping;
+  renderer.setClearColor(0x000000, 0); // transparent
+
+  // scene/camera
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 1000);
+
+  // geometry
+  const geometry = new THREE.SphereGeometry(1, 64, 64);
+
+  // resize helper
+  function resizeRenderer(){
+    const wrap = document.querySelector('.globe-inner');
+    if(!wrap) return;
+    const w = Math.max(32, Math.floor(wrap.clientWidth));
+    renderer.setSize(w, w, false);
+    camera.aspect = 1;
+    camera.updateProjectionMatrix();
+    camera.position.set(0, 0, 2.6);
+  }
+
+  // loader
+  const loader = new THREE.TextureLoader();
+  loader.setCrossOrigin('anonymous'); // keep if your image is cross-origin
+  const textureURL = 'images/globe-placeholder.png'; // swap to your real original file if different
+
+  loader.load(
+    textureURL,
+    (tex) => {
+      // preserve original pixels/colors
+      tex.encoding = THREE.sRGBEncoding;
+      tex.flipY = false; // keep false for typical equirectangular; toggle if upside-down
+      tex.wrapS = THREE.ClampToEdgeWrapping;
+      tex.wrapT = THREE.ClampToEdgeWrapping;
+      tex.anisotropy = renderer.capabilities.getMaxAnisotropy();
+      tex.generateMipmaps = true;
+      tex.needsUpdate = true;
+
+      // Use MeshBasicMaterial (no lighting). We enable transparency and use alphaTest to *discard*
+      // very-low-alpha pixels that were anti-aliased on a white background (the white fringe you see).
+      const material = new THREE.MeshBasicMaterial({
+        map: tex,
+        transparent: true,   // allow alpha to pass
+        // alphaTest will discard fragments with alpha <= threshold. Lower = smoother edge; 0.03-0.08 is common.
+        alphaTest: 0.05,
+        toneMapped: false
+      });
+
+      const sphere = new THREE.Mesh(geometry, material);
+      scene.add(sphere);
+
+      // slight tilt for appearance in your cropped semicircle
+      sphere.rotation.x = -0.10;
+
+      // If your texture looks mirrored left-right: uncomment:
+      // sphere.scale.x = -1;
+
+      resizeRenderer();
+      window.addEventListener('resize', resizeRenderer);
+
+      const revsPerSecond = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--globe-speed')) || 0.6;
+      function animate(){
+        requestAnimationFrame(animate);
+        sphere.rotation.y += (Math.PI * 2) * (revsPerSecond / 40) / 60;
+        renderer.render(scene, camera);
+      }
+      animate();
+    },
+    undefined,
+    (err) => {
+      console.warn('Globe texture failed to load:', err);
+      resizeRenderer();
+      const ctx = canvas.getContext('2d');
+      let t = 0;
+      function fallback(){
+        t += 1;
+        const w = canvas.width, h = canvas.height;
+        ctx.clearRect(0,0,w,h);
+        const grd = ctx.createLinearGradient((t%200)-100,0,(t%200)+100,0);
+        grd.addColorStop(0, '#002b4f'); grd.addColorStop(0.5, '#0066cc'); grd.addColorStop(1, '#002b4f');
+        ctx.save(); ctx.beginPath(); ctx.arc(w/2, w/2, w/2 - 2, Math.PI*1, 0, true); ctx.clip();
+        ctx.fillStyle = grd; ctx.fillRect(0,0,w,h);
+        ctx.restore();
+        requestAnimationFrame(fallback);
+      }
+      fallback();
+    }
+  );
+})();
+</script>
+
+</body>
+
+<!-- Mirrored from xeno-executor.lol/ by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 01 Nov 2025 19:52:35 GMT -->
+</html>
+
+
+

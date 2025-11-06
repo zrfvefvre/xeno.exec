@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>404 — Page not found · Xeno</title>
+
+<!-- Favicon files (in /favicon/) -->
+<link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+<link rel="manifest" href="/favicon/site.webmanifest">
+<meta name="theme-color" content="#050505">
+
+<!-- Prevent indexing for 404 page -->
+<meta name="robots" content="noindex, nofollow">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg: #050505;
+    --muted: rgba(255,255,255,0.50);
+    --accent: #ffffff;
+    --nav-h: 64px;
+    --pill-radius: 40px;
+    --ease: cubic-bezier(.2,.9,.2,1);
+    --glow-color: 64,169,255;
+    --action-blue-1: #2DA8FF;
+    --action-blue-2: #0077E6;
+  }
+
+  *{box-sizing:border-box}
+  html,body{height:100%;margin:0;background:var(--bg);color:var(--accent);font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial;-webkit-font-smoothing:antialiased}
+  img{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+
+  /* ---------- NAVBAR (kept + fixed improvements) ---------- */
+  header.site-header{position:fixed;left:0;right:0;top:0;height:var(--nav-h);z-index:1600;display:flex;align-items:center;justify-content:center;background:transparent;pointer-events:auto}
+  .nav-inner{width:100%;max-width:1280px;padding:10px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;transition: all 360ms var(--ease); background:transparent; border-radius:8px; position:relative; z-index:1600;}
+
+  .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit;cursor:pointer}
+  .brand img{width:28px;height:28px;display:block}
+  .brand .title{font-weight:800;font-family:Poppins;font-size:18px;letter-spacing:-0.01em}
+  .brand:focus-visible{outline:none;box-shadow:0 0 0 6px rgba(var(--glow-color),0.08);border-radius:8px}
+
+  nav.nav-links{display:flex;gap:18px;align-items:center;justify-content:center;flex:1;max-width:760px;margin:0 12px;overflow:visible;flex-wrap:wrap}
+  nav.nav-links a{color:var(--muted);text-decoration:none;font-size:15px;font-weight:600;padding:6px 8px;position:relative;transition:transform 220ms var(--ease), color 160ms linear;white-space:nowrap}
+  nav.nav-links a:hover, nav.nav-links a:focus{color:var(--accent);transform:translateY(-3px);text-shadow:0 6px 18px rgba(255,255,255,0.08)}
+
+  .nav-right{display:flex;align-items:center;gap:14px}
+  .micro-icon{width:18px;height:18px;opacity:0.92}
+  .join-pill{height:34px;padding:6px 12px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.04);font-weight:700;font-size:13px;display:inline-flex;align-items:center;gap:8px;cursor:pointer}
+  .join-pill:focus-visible{outline:none;box-shadow:0 0 0 6px rgba(var(--glow-color),0.08)}
+
+  /* improved hamburger button */
+  .hamburger{
+    display:none;
+    width:44px;height:44px;border-radius:10px;align-items:center;justify-content:center;cursor:pointer;border:1px solid rgba(255,255,255,0.06);background:rgba(255,255,255,0.02);
+    padding:0; -webkit-appearance:none; appearance:none; position:relative; z-index:1700;
+  }
+  .hamburger .line{ width:18px; height:2px; border-radius:2px; background:var(--accent); display:block; position:relative; }
+  .hamburger .line::before, .hamburger .line::after{ content:""; position:absolute; left:0; width:18px; height:2px; border-radius:2px; background:var(--accent); }
+  .hamburger .line::before{ top:-7px; }
+  .hamburger .line::after{ top:7px; }
+  .hamburger:hover{ background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.10); transform: translateY(-1px); }
+  .hamburger:active{ transform: translateY(0); }
+  .hamburger:focus-visible{ outline:none; box-shadow: 0 0 0 6px rgba(var(--glow-color),0.08); border-radius:10px; }
+
+  /* X animation when open */
+  .hamburger[aria-expanded="true"] .line{ background:transparent; }
+  .hamburger[aria-expanded="true"] .line::before{ transform: translateY(7px) rotate(45deg); }
+  .hamburger[aria-expanded="true"] .line::after{ transform: translateY(-7px) rotate(-45deg); }
+  .hamburger .line::before, .hamburger .line::after{ transition: transform 180ms cubic-bezier(.2,.9,.2,1); transform-origin:center; }
+
+  /* mobile-specific layout */
+  @media (max-width:900px){
+    .nav-inner{gap:8px}
+    nav.nav-links{display:none;position:absolute;left:12px;right:12px;top:var(--nav-h);background:rgba(0,0,0,0.96);padding:12px;border-radius:12px;flex-direction:column;gap:8px;box-shadow:0 30px 80px rgba(0,0,0,0.75);-webkit-backdrop-filter:none;backdrop-filter:none;z-index:1400;}
+    nav.nav-links.open{display:flex}
+    .hamburger{display:flex}
+  }
+
+  /* general header pilled state (kept) */
+  header.site-header.is-pilled .nav-inner{width: calc(100% - 96px);margin:8px auto;padding:12px 18px;border-radius: var(--pill-radius);background: rgba(6,6,6,0.48);-webkit-backdrop-filter: blur(8px);backdrop-filter: blur(8px);border: 1px solid rgba(255,255,255,0.035);box-shadow: 0 30px 90px rgba(0,0,0,0.75);transform: translateY(6px);} 
+
+  /* ---------- 404 CONTENT (minimal) ---------- */
+  main{padding-top: calc(var(--nav-h) + 40px);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:40px 20px}
+  .error-card{width:100%;max-width:760px;background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.004));border-radius:18px;padding:44px 36px;border:1px solid rgba(255,255,255,0.03);box-shadow: 0 30px 80px rgba(0,0,0,0.7);text-align:center;}
+  .error-code{font-family:Poppins,Inter;font-size:clamp(48px,9vw,92px);line-height:1;margin:0 0 8px;font-weight:800}
+  .error-message{color:var(--muted);margin:0 0 20px;font-size:16px}
+
+  /* ====== VISIBLE, site-themed primary button ====== */
+  .btn{
+    background:transparent;
+    border:1px solid rgba(255,255,255,0.06);
+    padding:12px 18px;
+    border-radius:12px;
+    font-weight:700;
+    cursor:pointer;
+    transition:transform 180ms var(--ease),box-shadow 180ms var(--ease), background 180ms var(--ease), color 180ms var(--ease);
+    color:var(--accent);
+  }
+
+  /* Make primary button match the translucent pill style used across the site */
+  .btn.primary{
+    background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+    border: 1px solid rgba(255,255,255,0.04);
+    color: var(--accent);
+    box-shadow: 0 8px 28px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.02);
+  }
+
+  .btn.primary:hover{
+    transform: translateY(-4px);
+    box-shadow: 0 28px 100px rgba(0,0,0,0.72), 0 0 40px rgba(var(--glow-color),0.08);
+    background: linear-gradient(180deg, rgba(255,255,255,0.045), rgba(255,255,255,0.014));
+  }
+
+  .btn.primary:focus-visible{
+    outline:none;
+    box-shadow: 0 18px 60px rgba(var(--glow-color),0.12), 0 0 0 6px rgba(var(--glow-color),0.08);
+    border-radius:12px;
+  }
+
+  /* footer (kept simple to match theme) */
+  footer.site-footer{margin-top:40px;padding:20px 20px;border-top:1px solid rgba(255,255,255,0.02);display:flex;align-items:center;justify-content:space-between;color:var(--muted);gap:12px;flex-wrap:wrap}
+  .footer-brand{display:flex;align-items:center;gap:12px}
+  .footer-links{display:flex;gap:12px;align-items:center}
+  .footer-links a{color:var(--muted);text-decoration:none;font-weight:600;font-size:14px;padding:6px 8px;border-radius:6px}
+
+  /* reduce motion preference */
+  @media (prefers-reduced-motion: reduce){ *{transition:none !important} }
+</style>
+</head>
+<body>
+
+<header class="site-header" id="siteHeader" aria-hidden="false">
+  <div class="nav-inner" id="navInner">
+    <!-- BRAND (anchor) -->
+    <a href="/" class="brand" id="brandLink" aria-label="Go to homepage">
+      <img src="images/logo-placeholder.png" alt="Xeno logo">
+      <div class="title">Xeno</div>
+    </a>
+
+    <!-- PRIMARY NAV -->
+    <nav class="nav-links" id="mainNav" aria-label="Primary navigation">
+      <a href="/">Home</a>
+      <a href="/about">About</a>
+      <a href="/tutorial">Help</a>
+      <a href="/download">Download</a>
+    </nav>
+
+    <!-- hamburger + right controls -->
+    <div style="display:flex;align-items:center;gap:12px">
+      <!-- improved accessible button -->
+      <button id="hamburger" class="hamburger" aria-expanded="false" aria-controls="mainNav" title="Toggle menu" aria-label="Toggle primary navigation">
+        <span class="line" aria-hidden="true"></span>
+      </button>
+
+      <div class="nav-right">
+        <img src="images/discord-icon.png" class="micro-icon" alt="discord icon">
+        <div class="join-pill" role="button" tabindex="0" onclick="location.href='https://discord.gg'">Join Discord</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="error-card" role="main" aria-labelledby="errTitle">
+    <h1 id="errTitle" class="error-code">404</h1>
+    <p class="error-message">Sorry — that page can't be found.</p>
+    <button class="btn primary" onclick="location.href='/'" aria-label="Go to homepage">Go to Homepage</button>
+  </div>
+</main>
+
+<footer class="site-footer" role="contentinfo">
+  <div class="footer-brand">
+    <img src="images/logo-placeholder.png" width="28" height="28" alt="">
+    <div style="font-weight:700">Experience the future</div>
+  </div>
+  <div class="footer-links" aria-label="Footer links">
+    <a href="/tutorial">Help</a>
+    <a href="/download">Download</a>
+  </div>
+</footer>
+
+<script>
+/* Header pill on scroll */
+(function(){
+  const header = document.getElementById('siteHeader');
+  function checkScroll(){
+    const y = window.scrollY || window.pageYOffset;
+    header.classList.toggle('is-pilled', y > 10);
+  }
+  window.addEventListener('scroll', checkScroll, {passive:true});
+  checkScroll();
+})();
+
+/* Hamburger toggle: sync aria, close on outside click and Esc */
+(function(){
+  const ham = document.getElementById('hamburger');
+  const nav = document.getElementById('mainNav');
+  const header = document.getElementById('siteHeader');
+
+  if(!ham || !nav) return;
+
+  const setAria = (open) => ham.setAttribute('aria-expanded', !!open);
+
+  function closeMenu(){
+    nav.classList.remove('open');
+    header.classList.remove('menu-open');
+    setAria(false);
+  }
+  function openMenu(){
+    nav.classList.add('open');
+    header.classList.add('menu-open');
+    setAria(true);
+  }
+
+  ham.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const nowOpen = !nav.classList.contains('open');
+    if(nowOpen) openMenu(); else closeMenu();
+  });
+
+  // close on outside click
+  document.addEventListener('click', (e) => {
+    if(nav.classList.contains('open') && !nav.contains(e.target) && !ham.contains(e.target)) closeMenu();
+  });
+
+  // close on Escape
+  document.addEventListener('keydown', (e) => {
+    if(e.key === 'Escape') closeMenu();
+  });
+
+  // ensure initial aria state is correct
+  setAria(nav.classList.contains('open'));
+})();
+
+/* Make join-pill keyboard friendly */
+document.querySelectorAll('.join-pill').forEach(el=>{
+  el.addEventListener('keydown', (e)=> {
+    if(e.key === 'Enter' || e.key === ' ') { e.preventDefault(); el.click(); }
+  });
+});
+</script>
+</body>
+</html>

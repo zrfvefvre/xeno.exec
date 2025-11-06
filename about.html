@@ -1,0 +1,485 @@
+<!doctype html>
+<html lang="en">
+
+<!-- Mirrored from xeno-executor.lol/about by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 01 Nov 2025 19:52:35 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Xeno | The Best Key-Less Executor — About</title>
+
+<!-- Favicons (in /favicon/) -->
+<link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+<link rel="manifest" href="favicon/site.webmanifest">
+<meta name="theme-color" content="#050505">
+
+<!-- Primary SEO meta -->
+<meta name="description" content="Xeno — a free, keyless Roblox executor built for fast external script execution, lightweight performance, and a clean easy-to-use interface.">
+<meta name="keywords" content="Roblox executor, free executor, keyless executor, script execution, external executor, Xeno">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="index.html">
+<meta name="author" content="Xeno">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&amp;family=Poppins:wght@600;700;800&amp;display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg: #050505;
+    --muted: rgba(255,255,255,0.50);
+    --accent: #ffffff;
+    --nav-h: 64px;
+    --pill-radius: 40px;
+    --ease: cubic-bezier(.2,.9,.2,1);
+    --globe-size: clamp(300px, 36vw, 520px);
+    --globe-speed: 0.6;
+    --glow-color: 64,169,255;
+  }
+
+  *{box-sizing:border-box}
+  html,body{height:100%;margin:0;background:var(--bg);color:var(--accent);font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial;-webkit-font-smoothing:antialiased}
+  img{display:block;max-width:100%}
+  a{color:inherit}
+  main{padding-top: calc(var(--nav-h) + 40px);}
+
+  /* HEADER / NAV */
+  header.site-header{
+    position:fixed;
+    left:0; right:0; top:0;
+    height:var(--nav-h);
+    z-index:1600;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:transparent;
+    pointer-events:auto;
+  }
+  .nav-inner{
+    width:100%;
+    max-width:1280px;
+    padding:10px 20px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    transition: all 360ms var(--ease);
+    background:transparent;
+    border-radius:8px;
+    position:relative;
+    z-index:1601;
+  }
+
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    text-decoration:none;
+    color:inherit;
+  }
+  .brand img{width:28px;height:28px;display:block}
+  .brand .title{font-weight:800;font-family:Poppins;font-size:18px;letter-spacing:-0.01em}
+
+  nav.nav-links{
+    display:flex;
+    gap:18px;
+    align-items:center;
+    justify-content:center;
+    flex:1;
+    max-width:760px;
+    margin:0 12px;
+    overflow:visible;
+    flex-wrap:wrap;
+    position:relative; /* desktop default */
+    z-index:1700;
+  }
+  nav.nav-links a{color:var(--muted);text-decoration:none;font-size:15px;font-weight:600;padding:6px 8px;position:relative;transition:transform 220ms var(--ease), color 160ms linear, text-shadow 260ms var(--ease);white-space:nowrap}
+
+  nav.nav-links a:hover,
+  nav.nav-links a:focus{
+    color:var(--accent);
+    transform: translateY(-3px);
+    text-shadow: 0 6px 18px rgba(255,255,255,0.08), 0 0 30px rgba(var(--glow-color),0.06);
+    outline: none;
+  }
+  nav.nav-links a:focus-visible{box-shadow: 0 0 0 4px rgba(var(--glow-color),0.08);border-radius:6px}
+
+  .nav-right{display:flex;align-items:center;gap:14px}
+  .micro-icon{width:18px;height:18px;opacity:0.92}
+  .join-pill{height:34px;padding:6px 12px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.04);font-weight:700;font-size:13px;display:inline-flex;align-items:center;gap:8px;transition:transform 220ms var(--ease),box-shadow 220ms var(--ease);cursor:pointer}
+
+  /* HAMBURGER (single-span with ::before/::after) */
+  .hamburger{
+    display:none;
+    width:42px;height:42px;border-radius:10px;align-items:center;justify-content:center;cursor:pointer;border:1px solid rgba(255,255,255,0.03);background:rgba(255,255,255,0.01);padding:0;-webkit-appearance:none;appearance:none;
+  }
+  .hamburger:focus{outline:none}
+  .hamburger:focus-visible{ box-shadow: 0 0 0 6px rgba(var(--glow-color),0.08); border-radius:10px; }
+  .hamburger span{ display:block; width:18px; height:2px; background:var(--muted); border-radius:2px; position:relative; transition: background 180ms cubic-bezier(.2,.9,.2,1), transform 200ms cubic-bezier(.2,.9,.2,1); }
+  .hamburger span::before,
+  .hamburger span::after{ content:""; position:absolute; left:0; width:18px; height:2px; background:var(--muted); border-radius:2px; transition: transform 180ms cubic-bezier(.2,.9,.2,1), top 180ms cubic-bezier(.2,.9,.2,1), opacity 180ms ease; }
+  .hamburger span::before{ top: -7px; }
+  .hamburger span::after{ top: 7px; }
+
+  /* open state -> X */
+  .hamburger[aria-expanded="true"] span{ background: transparent; }
+  .hamburger[aria-expanded="true"] span::before{ transform: translateY(7px) rotate(45deg); top:0; }
+  .hamburger[aria-expanded="true"] span::after{ transform: translateY(-7px) rotate(-45deg); top:0; }
+
+  .hamburger:hover span,
+  .hamburger:hover span::before,
+  .hamburger:hover span::after { background: var(--accent); }
+
+  /* when the menu is open, add pill feel to header (same visual as home) */
+  header.site-header.is-pilled .nav-inner{ width: calc(100% - 96px); margin:8px auto; padding:12px 18px; border-radius: var(--pill-radius); background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.006)); border: 1px solid rgba(255,255,255,0.035); box-shadow: 0 30px 90px rgba(0,0,0,0.75); transform: translateY(6px); }
+
+  /* MOBILE NAV (overlay dropdown) */
+  @media (max-width:900px){
+    .nav-inner{ gap:8px }
+    nav.nav-links{
+      display:none;
+      position:absolute;
+      left:12px;
+      right:12px;
+      top:var(--nav-h);
+      background:rgba(0,0,0,0.96);
+      padding:12px;
+      border-radius:12px;
+      flex-direction:column;
+      gap:8px;
+      box-shadow:0 30px 80px rgba(0,0,0,0.75);
+      -webkit-backdrop-filter:none;
+      backdrop-filter:none;
+      z-index:1700;
+    }
+    nav.nav-links.open{ display:flex; }
+    .hamburger{ display:flex; z-index:1750; }
+  }
+
+  /* small screens */
+  @media (max-width:520px){
+    .brand .title{ display:none; }
+    .nav-inner{ padding:8px; }
+  }
+
+  /* HERO / CONTENT */
+  .hero{ padding:22px 20px 30px; text-align:center; max-width:1200px; margin:0 auto }
+  .hero h1{ font-family:Poppins,Inter;font-size:clamp(26px, 4.2vw, 36px); line-height:1.02; margin:0; font-weight:800; letter-spacing:-0.02em; color:var(--accent) }
+  .hero p.lead{ margin:18px auto 0; max-width:920px; color:var(--muted); font-size:clamp(13px,1.8vw,15.5px); font-weight:500 }
+
+  .container{ max-width:1180px; margin:28px auto; padding:0 20px }
+  .about-card{ background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.005)); border-radius:18px; padding:28px; border:1px solid rgba(255,255,255,0.03); box-shadow:0 20px 60px rgba(0,0,0,0.7) }
+  .about-card h2{ margin:0; font-family:Poppins; font-size:20px }
+  .about-card p{ color:var(--muted); line-height:1.6; margin-top:12px }
+
+  .features-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:18px }
+  .feature{ background:rgba(255,255,255,0.02); padding:18px; border-radius:12px; border:1px solid rgba(255,255,255,0.02); transition:transform 360ms cubic-bezier(.2,.9,.2,1), box-shadow 360ms cubic-bezier(.2,.9,.2,1), border-color 360ms linear; will-change:transform,box-shadow }
+  .feature h4{ margin:0; font-family:Poppins; font-size:15px }
+  .feature p{ margin:8px 0 0; color:var(--muted); font-size:13px }
+  @media (max-width:1000px){ .features-grid{ grid-template-columns:repeat(2,1fr) } }
+  @media (max-width:680px){ .features-grid{ grid-template-columns:1fr } }
+
+  /* FOOTER */
+  footer.site-footer{ margin-top:40px; padding:20px 20px; border-top:1px solid rgba(255,255,255,0.02); display:flex; align-items:center; justify-content:space-between; color:var(--muted); transition:transform 260ms var(--ease),box-shadow 260ms var(--ease); position:relative; background:transparent; gap:12px; flex-wrap:wrap }
+  footer.site-footer .thin-line{ flex-basis:100%; height:1px }
+  .footer-brand{ display:flex; align-items:center; gap:12px }
+  .footer-links{ display:flex; gap:12px; align-items:center }
+  .footer-links a{ color:var(--muted); text-decoration:none; font-weight:600; font-size:14px; padding:6px 8px; border-radius:6px }
+
+  /* Respect reduced motion */
+  @media (prefers-reduced-motion: reduce){
+    *{ transition:none !important }
+  }
+
+  /* when menu is open, tint the header background slightly for clarity */
+  header.menu-open{ background: rgba(6,6,6,0.36); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); z-index:1600; }
+</style>
+</head>
+<body>
+
+<header class="site-header" id="siteHeader" aria-hidden="false">
+  <div class="nav-inner" id="navInner">
+    <a href="index.html" class="brand" id="brandLink" aria-label="Go to homepage">
+      <img src="images/logo-placeholder.png" alt="Xeno logo">
+      <div class="title">Xeno</div>
+    </a>
+
+    <nav class="nav-links" id="mainNav" aria-label="Primary navigation" aria-hidden="true">
+      <a href="index.html">Home</a>
+      <a href="about">About</a>
+      <a href="tutorial">Help</a>
+      <a href="download">Download</a>
+    </nav>
+
+    <div style="display:flex;align-items:center;gap:12px">
+      <button class="hamburger" id="hamburger" aria-expanded="false" aria-controls="mainNav" aria-label="Toggle menu" title="Toggle menu" type="button">
+        <span aria-hidden="true"></span>
+      </button>
+
+      <div class="nav-right">
+        <img src="images/discord-icon.png" class="micro-icon" alt="discord icon">
+        <div class="join-pill">Join Discord</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero" aria-labelledby="hero-title">
+    <h1 id="hero-title">About <strong style="font-family:Poppins;font-weight:800">Xeno</strong></h1>
+    <p class="lead muted">Everything about Xeno — features, community and more.</p>
+  </section>
+
+  <div class="container">
+    <section class="about-card" aria-labelledby="about-heading">
+      <h2 id="about-heading">About Xeno</h2>
+      <p>Xeno is an external Roblox executor that combines features. Built with performance in mind, it offers seamless <strong>Script Execution</strong> and reliable memory management for the best experience.</p>
+
+      <p>What sets Xeno apart is its commitment to being completely a Free And Keyless Executor, making it accessible to everyone. The interface is designed to be simple, whether you're new to using these tools or an experienced user.</p>
+
+      <p>With features like multi-attach support, Online Script Hub integration, and Online Script Execution, Xeno provides everything you need as a utility tool for Roblox. Regular updates ensure compatibility with the latest Roblox versions.</p>
+
+      <div class="features-grid" aria-hidden="false">
+        <div class="feature"><h4>External Execution</h4><p>Run scripts externally with no in-game limitation.</p></div>
+        <div class="feature"><h4>Lightning Fast Execution</h4><p>Optimised for speed and low latency.</p></div>
+        <div class="feature"><h4>100% Free & Keyless</h4><p>No keys required — completely free to use.</p></div>
+        <div class="feature"><h4>Simple Design</h4><p>Minimal, clean UI for everyone.</p></div>
+        <div class="feature"><h4>Easy to Use</h4><p>Intuitive controls for new users.</p></div>
+        <div class="feature"><h4>Lightweight</h4><p>Small footprint and efficient memory usage.</p></div>
+      </div>
+
+      <div class="users-card" id="usersCard" style="margin-top:28px">
+        <div class="header" style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+          <div style="display:flex;align-items:center;gap:12px">
+            <img src="images/logo-placeholder.png" width="18" height="18" alt="">
+            <div>
+              <div style="font-weight:700">Xeno</div>
+              <div style="color:var(--muted);font-size:12px" id="onlineCount">40,000+ Members Online</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="user-list-wrap" style="height:220px;border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,0.02);position:relative">
+          <div class="user-list" id="userList" tabindex="0" aria-label="Online members list" style="overflow-y:auto;height:100%;padding:8px 0;">
+            <!-- users populated by script -->
+          </div>
+        </div>
+      </div>
+
+    </section>
+  </div>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="thin-line" aria-hidden="true"></div>
+
+    <div class="footer-brand">
+      <img src="images/logo-placeholder.png" width="28" height="28" alt="">
+      <div style="font-weight:700">Experience the future</div>
+    </div>
+
+    <div class="footer-links" aria-label="Footer links">
+      <a href="tutorial">Help</a>
+      <a href="download">Download</a>
+    </div>
+
+    <div class="footer-social" style="display:flex;gap:12px;align-items:center;opacity:0.92">
+      <a href="#" aria-label="Discord"><img src="images/discord-icon.png" width="18" height="18" alt=""></a>
+    </div>
+  </footer>
+</main>
+
+<script>
+/* NAV: pill state on scroll (same as homepage) */
+(function(){
+  const header = document.getElementById('siteHeader');
+  let ticking = false;
+  function checkScroll(){
+    const y = window.scrollY || window.pageYOffset;
+    if(y > 10) header.classList.add('is-pilled'); else header.classList.remove('is-pilled');
+  }
+  window.addEventListener('scroll', ()=> {
+    if(!ticking){ window.requestAnimationFrame(()=>{ checkScroll(); ticking=false; }); ticking=true; }
+  }, {passive:true});
+  checkScroll();
+})();
+
+/* HAMBURGER TOGGLE: accessible, ARIA-synced */
+(function(){
+  const ham = document.getElementById('hamburger');
+  const nav = document.getElementById('mainNav');
+  const header = document.getElementById('siteHeader');
+  if(!ham || !nav) return;
+
+  // sync initial state
+  ham.setAttribute('aria-expanded', 'false');
+  nav.setAttribute('aria-hidden', 'true');
+  nav.classList.remove('open');
+
+  function setOpen(open){
+    nav.classList.toggle('open', open);
+    header.classList.toggle('menu-open', open);
+    ham.setAttribute('aria-expanded', String(!!open));
+    nav.setAttribute('aria-hidden', String(!open));
+  }
+
+  ham.addEventListener('click', (e)=> {
+    e.stopPropagation();
+    setOpen(!nav.classList.contains('open'));
+  });
+
+  // close on outside click
+  document.addEventListener('click', (e)=> {
+    if(nav.classList.contains('open') && !nav.contains(e.target) && !ham.contains(e.target)) setOpen(false);
+  });
+
+  // close on Escape
+  document.addEventListener('keydown', (e)=> { if(e.key === 'Escape') setOpen(false); });
+
+  // observe changes to keep aria attributes synced
+  new MutationObserver(()=> {
+    ham.setAttribute('aria-expanded', String(nav.classList.contains('open')));
+    nav.setAttribute('aria-hidden', String(!nav.classList.contains('open')));
+  }).observe(nav, { attributes:true, attributeFilter:['class'] });
+})();
+
+/* USER LIST: fetch sample users (polite batching) — purely client-side */
+(function(){
+  const userList = document.getElementById('userList');
+  const onlineCount = document.getElementById('onlineCount');
+  if(!userList || !onlineCount) return;
+
+  const FETCH_TARGET = 1200;
+  const BATCH_SIZE = 500;
+  const NAT = 'us,gb,ca,au';
+  const API_BASE = 'https://randomuser.me/api/';
+  const STATUSES = ['Online','Idle','Dnd','Offline','Playing Valorant','Playing Minecraft','Playing CS:GO','Active','Recently'];
+  const PUBLIC_DISPLAY_COUNT = '40,000+';
+
+  const pick = (arr)=> arr[Math.floor(Math.random()*arr.length)];
+  function escapeHtml(s){ return String(s).replace(/[&<>"']/g, c=> ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+  function formatName(res, idx){
+    let username = (res.login && res.login.username) ? res.login.username : `${res.name.first}${res.name.last}`;
+    username = username.replace(/\d+$/,'');
+    if(Math.random() < 0.15) username = '! ' + username;
+    if(Math.random() < 0.06) username = username.replace(/[aeo]/gi, c => c.toUpperCase());
+    return username;
+  }
+
+  async function fetchBatch(n){
+    const url = `${API_BASE}?results=${n}&inc=name,picture,login&nat=${encodeURIComponent(NAT)}`;
+    const r = await fetch(url);
+    if(!r.ok) throw new Error(`RandomUser failed (${r.status})`);
+    const j = await r.json();
+    return Array.isArray(j.results) ? j.results : [];
+  }
+
+  async function fetchAll(){
+    let accumulated = [];
+    let remaining = FETCH_TARGET;
+    try{
+      while(remaining > 0){
+        const batch = Math.min(BATCH_SIZE, remaining);
+        const results = await fetchBatch(batch);
+        if(results.length === 0) throw new Error('Empty batch');
+        accumulated = accumulated.concat(results);
+        remaining = FETCH_TARGET - accumulated.length;
+        await new Promise(res => setTimeout(res, 120));
+      }
+    }catch(err){
+      console.warn('RandomUser batch fetch failed, filling remainder with generated avatars.', err);
+      const have = accumulated.length;
+      for(let i=have;i<FETCH_TARGET;i++){
+        accumulated.push({
+          login: { username: `user${i+1}` },
+          name: { first: 'User', last: String(i+1) },
+          picture: { thumbnail: `https://avatars.dicebear.com/api/identicon/user${i+1}.svg` }
+        });
+      }
+    }
+    const people = accumulated.map((r, i) => ({
+      name: formatName(r, i),
+      status: pick(STATUSES),
+      avatar: (r.picture && (r.picture.medium || r.picture.thumbnail || r.picture.large)) || `https://avatars.dicebear.com/api/identicon/${encodeURIComponent((r.login && r.login.username)||('user'+i))}.svg`
+    }));
+    renderPeople(people);
+  }
+
+  function renderPeople(people){
+    userList.innerHTML = '';
+    const frag = document.createDocumentFragment();
+    people.forEach(p => {
+      const el = document.createElement('div');
+      el.className = 'user-item';
+      el.style.display = 'flex';
+      el.style.alignItems = 'center';
+      el.style.gap = '12px';
+      el.style.padding = '10px 16px';
+      el.style.borderBottom = '1px solid rgba(255,255,255,0.06)';
+      el.style.background = 'linear-gradient(180deg, rgba(255,255,255,0.002), rgba(255,255,255,0.000))';
+      el.innerHTML = `<img src="${escapeHtml(p.avatar)}" style="width:40px;height:40px;border-radius:999px;object-fit:cover"><div style="flex:1"><div style="font-weight:700">${escapeHtml(p.name)}</div><div style="color:var(--muted);font-size:13px;margin-top:4px">${escapeHtml(p.status)}</div></div>`;
+      frag.appendChild(el);
+    });
+    userList.appendChild(frag);
+    const originalCount = userList.children.length;
+    for(let i=0;i<originalCount;i++){
+      userList.appendChild(userList.children[i].cloneNode(true));
+    }
+    if(onlineCount) onlineCount.textContent = `${PUBLIC_DISPLAY_COUNT} Members Online`;
+    initAutoScroll();
+  }
+
+  let raf = null;
+  let speed = 0.45;
+  let isPaused = false;
+
+  function step(){
+    if(isPaused) return;
+    const half = userList.scrollHeight / 2;
+    userList.scrollTop += speed;
+    if(userList.scrollTop >= half){
+      userList.scrollTop -= half;
+    }
+    raf = requestAnimationFrame(step);
+  }
+
+  function initAutoScroll(){
+    if(raf) cancelAnimationFrame(raf);
+    userList.scrollTop = 0;
+    setTimeout(()=> {
+      if(raf) cancelAnimationFrame(raf);
+      isPaused = false;
+      raf = requestAnimationFrame(step);
+    }, 60);
+  }
+
+  userList.addEventListener('focusin', ()=> { isPaused = true; if(raf) cancelAnimationFrame(raf); });
+  userList.addEventListener('focusout', ()=> { if(!raf) { isPaused = false; raf = requestAnimationFrame(step); } });
+  userList.addEventListener('wheel', ()=> { isPaused = true; if(raf) cancelAnimationFrame(raf); clearTimeout(userList._wheelTO); userList._wheelTO = setTimeout(()=> { isPaused = false; raf = requestAnimationFrame(step); }, 900); }, {passive:true});
+
+  window.XenoUsers = {
+    add(person){
+      const el = document.createElement('div');
+      el.className = 'user-item';
+      el.style.display = 'flex';
+      el.style.alignItems = 'center';
+      el.style.gap = '12px';
+      el.style.padding = '10px 16px';
+      el.style.borderBottom = '1px solid rgba(255,255,255,0.06)';
+      el.style.background = 'linear-gradient(180deg, rgba(255,255,255,0.002), rgba(255,255,255,0.000))';
+      el.innerHTML = `<img src="${escapeHtml(person.avatar)}" style="width:40px;height:40px;border-radius:999px;object-fit:cover"><div style="flex:1"><div style="font-weight:700">${escapeHtml(person.name)}</div><div style="color:var(--muted);font-size:13px;margin-top:4px">${escapeHtml(person.status)}</div></div>`;
+      userList.insertBefore(el, userList.firstChild);
+      if(userList.children.length > 1){
+        userList.removeChild(userList.lastChild);
+        userList.appendChild(userList.children[0].cloneNode(true));
+      }
+    }
+  };
+
+  fetchAll();
+})();
+</script>
+
+</body>
+
+<!-- Mirrored from xeno-executor.lol/about by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 01 Nov 2025 19:52:35 GMT -->
+</html>
